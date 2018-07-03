@@ -29,9 +29,10 @@
 @implementation YBROptionView
 
 - (instancetype)initWithText:(NSString *)argText {
+    NSBundle *bundle = [NSBundle bundleForClass:YBRStar.class];
     return [self initWithText:argText
-                selectedImage:[UIImage imageNamed:@"ybr_options_resources_radio"]
-              unSelectedImage:[UIImage imageNamed:@"ybr_options_resources_unradio"]];
+                selectedImage:[UIImage imageNamed:@"ybr_options_resources_radio" inBundle:bundle compatibleWithTraitCollection:nil]
+              unSelectedImage:[UIImage imageNamed:@"ybr_options_resources_unradio" inBundle:bundle compatibleWithTraitCollection:nil]];
 }
 
 - (instancetype)initWithText:(NSString *)argText selectedImage:(UIImage *)argSelectedImage unSelectedImage:(UIImage *)argUnselectedImage {
