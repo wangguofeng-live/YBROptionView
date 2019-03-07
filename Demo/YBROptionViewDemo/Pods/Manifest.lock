@@ -1,0 +1,23 @@
+PODS:
+  - PureLayout (3.1.4)
+  - YBROptionView (0.0.4):
+    - PureLayout
+
+DEPENDENCIES:
+  - YBROptionView (from `../../../YBROptionView`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PureLayout
+
+EXTERNAL SOURCES:
+  YBROptionView:
+    :path: "../../../YBROptionView"
+
+SPEC CHECKSUMS:
+  PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
+  YBROptionView: 5939d8b5109cfa2743cd2446bb5882fbdd5842ca
+
+PODFILE CHECKSUM: dfd086a507db24359a67055971ccb7ba2d3ad8f1
+
+COCOAPODS: 1.5.2

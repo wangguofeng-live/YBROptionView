@@ -1,0 +1,32 @@
+{
+  "name": "YBROptionView",
+  "version": "0.0.4",
+  "summary": "A short description of YBROptionView.",
+  "description": "自定义复选框",
+  "homepage": "http://EXAMPLE/YBROptionView",
+  "license": "MIT",
+  "authors": {
+    "wangguofeng-live": "wangguofeng@live.cn"
+  },
+  "source": {
+    "git": "",
+    "tag": "0.0.4"
+  },
+  "source_files": [
+    "Classes",
+    "Classes/**/*.{h,m}"
+  ],
+  "exclude_files": "Classes/Exclude",
+  "resources": "Resources/*.png",
+  "dependencies": {
+    "PureLayout": [
+
+    ]
+  },
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}
