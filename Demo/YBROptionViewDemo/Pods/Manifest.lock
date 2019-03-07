@@ -1,23 +1,32 @@
 PODS:
+  - Masonry (1.1.0)
   - PureLayout (3.1.4)
+  - YBRConfigurationModule (0.0.4)
   - YBROptionView (0.0.4):
     - PureLayout
 
 DEPENDENCIES:
+  - Masonry
+  - YBRConfigurationModule (from `../../../YBRConfigurationModule`)
   - YBROptionView (from `../../../YBROptionView`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Masonry
     - PureLayout
 
 EXTERNAL SOURCES:
+  YBRConfigurationModule:
+    :path: "../../../YBRConfigurationModule"
   YBROptionView:
     :path: "../../../YBROptionView"
 
 SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
+  YBRConfigurationModule: 01a01396455083261895780f5960323a660de54f
   YBROptionView: 5939d8b5109cfa2743cd2446bb5882fbdd5842ca
 
-PODFILE CHECKSUM: dfd086a507db24359a67055971ccb7ba2d3ad8f1
+PODFILE CHECKSUM: 8f86c3b0b68121466de6dc21bb0ee69e402d2ea5
 
 COCOAPODS: 1.5.2

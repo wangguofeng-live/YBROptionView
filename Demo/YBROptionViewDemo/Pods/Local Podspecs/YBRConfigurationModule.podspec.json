@@ -1,0 +1,26 @@
+{
+  "name": "YBRConfigurationModule",
+  "version": "0.0.4",
+  "summary": "A short description of YBRConfigurationModule.",
+  "description": "项目宏常量模块",
+  "homepage": "http://EXAMPLE/YBRConfigurationModule",
+  "license": "MIT",
+  "authors": {
+    "wangguofeng-live": "wangguofeng@live.cn"
+  },
+  "source": {
+    "git": "",
+    "tag": "0.0.4"
+  },
+  "source_files": [
+    "Classes",
+    "Classes/**/*.{h,m}"
+  ],
+  "exclude_files": "Classes/Exclude",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}

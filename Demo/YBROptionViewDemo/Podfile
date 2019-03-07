@@ -7,7 +7,9 @@ target 'YBROptionViewDemo' do
   # use_frameworks!
 
   # Pods for YBROptionViewDemo
-
-pod 'YBROptionView', :path =>'../../../YBROptionView'
+  pod 'YBRConfigurationModule', :path =>'../../../YBRConfigurationModule'
+  pod 'YBROptionView', :path =>'../../../YBROptionView'
+  
+  pod 'Masonry'
 
 end
