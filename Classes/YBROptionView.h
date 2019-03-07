@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YBROptionGroup.h"
 
-@interface YBROptionView : UIControl
+@interface YBROptionView : UIControl <YBROptionGroupViewProtocol>
 
 - (instancetype)initWithText:(NSString *)argText;
 
@@ -21,39 +22,8 @@
 @property (nonatomic)UIColor *textColor;
 
 /**
- *  允许手动取消
+ *  允许手动取消 （当加入Group时，失效)
  */
 @property (nonatomic,assign)BOOL allowUnselected;
-
-@end
-
-
-@interface YBROptionGroup : NSObject
-
-- (instancetype)initWithGroupId:(NSString *)argGroupId;
-
-@property (nonatomic,readonly)NSInteger selectedIndex;
-
-@property (nonatomic,readonly)NSArray *selectedIndexs;
-
-@property (nonatomic,readonly)NSArray *allOptionViews;
-
-@property (nonatomic, copy)void (^actionSelectedOptionChangedBlock)(NSInteger changedIndex);
-
-/**
- *  允许手动取消
- */
-@property (nonatomic,assign)BOOL allowUnselected;
-
-/**
- *  允许多选
- */
-@property (nonatomic,assign)BOOL allowsMultipleSelection;
-
-- (void)addOptionView:(YBROptionView *)argOptionView;
-- (void)removeOptionView:(UIControl *)argOptionView;
-- (void)removeOptionViewAtIndex:(NSInteger)argIndex;
-
-- (void)setSelectedIndex:(NSInteger)argSelectedIndex;
 
 @end

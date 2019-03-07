@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A4993D1546507EB08CE2B3B /* libPods-YBROptionViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3481D18416D23418C81A8F8 /* libPods-YBROptionViewDemo.a */; };
+		CD4695D82230E9AD00A6A9F3 /* YBROptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4695D72230E9AD00A6A9F3 /* YBROptionButton.m */; };
 		CD60161A222FD29E000FE391 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD601619222FD29E000FE391 /* AppDelegate.m */; };
 		CD60161D222FD29E000FE391 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60161C222FD29E000FE391 /* ViewController.m */; };
 		CD601620222FD29E000FE391 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD60161E222FD29E000FE391 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 		06CAB2C66ADA738086B54196 /* Pods-YBROptionViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YBROptionViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YBROptionViewDemo/Pods-YBROptionViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7911E3D06319E516C34FC33B /* Pods-YBROptionViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YBROptionViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YBROptionViewDemo/Pods-YBROptionViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C3481D18416D23418C81A8F8 /* libPods-YBROptionViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YBROptionViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD4695D62230E9AD00A6A9F3 /* YBROptionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBROptionButton.h; sourceTree = "<group>"; };
+		CD4695D72230E9AD00A6A9F3 /* YBROptionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBROptionButton.m; sourceTree = "<group>"; };
 		CD601615222FD29E000FE391 /* YBROptionViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YBROptionViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD601618222FD29E000FE391 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD601619222FD29E000FE391 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,6 +64,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD4695D52230E94A00A6A9F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD4695D62230E9AD00A6A9F3 /* YBROptionButton.h */,
+				CD4695D72230E9AD00A6A9F3 /* YBROptionButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CD60160C222FD29E000FE391 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +94,7 @@
 		CD601617222FD29E000FE391 /* YBROptionViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CD4695D52230E94A00A6A9F3 /* Views */,
 				CD601618222FD29E000FE391 /* AppDelegate.h */,
 				CD601619222FD29E000FE391 /* AppDelegate.m */,
 				CD60161B222FD29E000FE391 /* ViewController.h */,
@@ -210,6 +223,7 @@
 			files = (
 				CD60161D222FD29E000FE391 /* ViewController.m in Sources */,
 				CD601628222FD2A0000FE391 /* main.m in Sources */,
+				CD4695D82230E9AD00A6A9F3 /* YBROptionButton.m in Sources */,
 				CD60161A222FD29E000FE391 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

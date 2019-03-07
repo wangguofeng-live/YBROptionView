@@ -14,19 +14,16 @@
 //#define YBROptionValueChangedNotificationUserInfoKey_Group @"YBROptionValueChangedNotificationUserInfoKey_Group"
 //#define YBROptionValueChangedNotificationUserInfoKey_FromObject @"YBROptionValueChangedNotificationUserInfoKey_FromObject"
 
-@class YBROptionGroup;
-
 @interface YBROptionView ()
 {
     UIImageView *m_pImageView;
     UILabel *m_pTextLabel;
 }
 
-@property (nonatomic, weak)YBROptionGroup *optionGroup;
-
 @end
 
 @implementation YBROptionView
+@synthesize groupId;
 
 - (instancetype)initWithText:(NSString *)argText {
     NSBundle *bundle = [NSBundle bundleForClass:YBROptionView.class];
@@ -71,7 +68,7 @@
 - (void)actionOnClick:(id)sender {
     //    [[NSNotificationCenter defaultCenter] postNotificationName:YBROptionValueChangedNotification object:nil userInfo:@{YBROptionValueChangedNotificationUserInfoKey_Group:self.group,YBROptionValueChangedNotificationUserInfoKey_FromObject : self}];
     //
-    if (!_optionGroup) {
+    if (!self.groupId) {
         
         if (_allowUnselected) {
             self.selected = !self.selected;
@@ -118,118 +115,6 @@
         self.alpha = 1;
     }else {
         self.alpha = 0.3f;
-    }
-}
-
-@end
-
-@interface YBROptionGroup ()
-{
-    NSMutableArray *m_arrOptionViews;
-}
-
-@end
-
-@implementation YBROptionGroup
-
-- (instancetype)initWithGroupId:(NSString *)argGroupId
-{
-    self = [super init];
-    if (self) {
-        m_arrOptionViews = [NSMutableArray array];
-    }
-    return self;
-}
-
-- (void)addOptionView:(YBROptionView *)argOptionView {
-    if (![m_arrOptionViews containsObject:argOptionView]) {
-        [m_arrOptionViews addObject:argOptionView];
-        argOptionView.optionGroup = self;
-        [argOptionView addTarget:self action:@selector(acitonOptionViewOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    }
-}
-- (void)removeOptionView:(UIControl *)argOptionView {
-    if ([m_arrOptionViews containsObject:argOptionView]) {
-        [argOptionView removeTarget:self action:@selector(acitonOptionViewOnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [m_arrOptionViews removeObject:m_arrOptionViews];
-    }
-}
-
-- (void)removeOptionViewAtIndex:(NSInteger)argIndex {
-    if (m_arrOptionViews.count > argIndex) {
-        UIControl *pControl = m_arrOptionViews[argIndex];
-        [pControl removeTarget:self action:@selector(acitonOptionViewOnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [m_arrOptionViews removeObjectAtIndex:argIndex];
-    }
-}
-
-- (NSInteger)selectedIndex {
-    
-    for (int i = 0; i < m_arrOptionViews.count; i++) {
-        UIControl *pControl = m_arrOptionViews[i];
-        if (pControl.selected) return i;
-    }
-    return -1;
-}
-
-- (void)setSelectedIndex:(NSInteger)argSelectedIndex {
-    if (argSelectedIndex < 0) {
-        [m_arrOptionViews makeObjectsPerformSelector:@selector(setSelected:) withObject:@NO];
-    }else if (m_arrOptionViews.count > argSelectedIndex) {
-        UIControl *pControl = m_arrOptionViews[argSelectedIndex];
-        [self acitonOptionViewOnClick:pControl];
-    }
-}
-
-- (NSArray *)selectedIndexs {
-    NSMutableArray *arrSelectedIndex = [NSMutableArray array];
-    
-    for (int i = 0; i < m_arrOptionViews.count; i++) {
-        UIControl *pControl = m_arrOptionViews[i];
-        if (pControl.selected) [arrSelectedIndex addObject:@(i)];
-    }
-    
-    return arrSelectedIndex;
-}
-
-- (NSArray *)allOptionViews {
-    return m_arrOptionViews;
-}
-
-- (void)acitonOptionViewOnClick:(id)sender {
-    
-    if (self.allowsMultipleSelection) {
-        //允许多选
-        UIControl *obj = sender;
-        if (_allowUnselected) {
-            obj.selected = !obj.selected;
-        }else {
-            obj.selected = YES;
-        }
-        
-         if (self.actionSelectedOptionChangedBlock) {
-             self.actionSelectedOptionChangedBlock([m_arrOptionViews indexOfObject:sender]);
-         }
-        
-    }else {
-        kWeakSelf(self)
-        [m_arrOptionViews enumerateObjectsUsingBlock:^(UIControl *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            if ([obj isEqual:sender]) {
-                
-                if (weakself.allowUnselected) {
-                    obj.selected = !obj.selected;
-                }else {
-                    obj.selected = YES;
-                }
-                
-                if (weakself.actionSelectedOptionChangedBlock) {
-                    weakself.actionSelectedOptionChangedBlock(idx);
-                }
-            }else {
-                obj.selected = NO;
-            }
-        }];
     }
 }
 
