@@ -22,7 +22,7 @@
     UILabel *m_pTextLabel;
 }
 
-@property (nonatomic, assign)YBROptionGroup *optionGroup;
+@property (nonatomic, weak)YBROptionGroup *optionGroup;
 
 @end
 
@@ -126,8 +126,8 @@
 @interface YBROptionGroup ()
 {
     NSMutableArray *m_arrOptionViews;
-    void (^argSelectedOptionChangedBlock)(NSInteger);
 }
+
 @end
 
 @implementation YBROptionGroup
@@ -207,34 +207,30 @@
             obj.selected = YES;
         }
         
-         if (argSelectedOptionChangedBlock) {
-             argSelectedOptionChangedBlock([m_arrOptionViews indexOfObject:sender]);
+         if (self.actionSelectedOptionChangedBlock) {
+             self.actionSelectedOptionChangedBlock([m_arrOptionViews indexOfObject:sender]);
          }
         
     }else {
-        
+        kWeakSelf(self)
         [m_arrOptionViews enumerateObjectsUsingBlock:^(UIControl *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if ([obj isEqual:sender]) {
                 
-                if (_allowUnselected) {
+                if (weakself.allowUnselected) {
                     obj.selected = !obj.selected;
                 }else {
                     obj.selected = YES;
                 }
                 
-                if (argSelectedOptionChangedBlock) {
-                    argSelectedOptionChangedBlock(idx);
+                if (weakself.actionSelectedOptionChangedBlock) {
+                    weakself.actionSelectedOptionChangedBlock(idx);
                 }
             }else {
                 obj.selected = NO;
             }
         }];
     }
-}
-
-- (void)addSelectedOptionChangedBlock:(void (^)(NSInteger))argBlock {
-    argSelectedOptionChangedBlock = [argBlock copy];
 }
 
 @end

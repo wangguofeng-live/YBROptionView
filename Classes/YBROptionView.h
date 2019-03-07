@@ -38,6 +38,8 @@
 
 @property (nonatomic,readonly)NSArray *allOptionViews;
 
+@property (nonatomic, copy)void (^actionSelectedOptionChangedBlock)(NSInteger changedIndex);
+
 /**
  *  允许手动取消
  */
@@ -53,7 +55,5 @@
 - (void)removeOptionViewAtIndex:(NSInteger)argIndex;
 
 - (void)setSelectedIndex:(NSInteger)argSelectedIndex;
-
-- (void)addSelectedOptionChangedBlock:(void (^)(NSInteger))argBlock;
 
 @end
