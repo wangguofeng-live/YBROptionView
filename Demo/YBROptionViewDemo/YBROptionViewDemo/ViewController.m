@@ -48,13 +48,13 @@
     [optionGrop addOptionView:pOption2View];
     
     
-    [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:150];
+    [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:50];
     [pOption1View autoSetDimensionsToSize:CGSizeMake(100, 30)];
-    [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:50];
+    [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:100];
     
-    [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:150];
+    [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:50];
     [pOption2View autoSetDimensionsToSize:CGSizeMake(100, 30)];
-    [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:50];
+    [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:100];
 }
 
 - (void)testCustomOptionView {
@@ -77,11 +77,11 @@
     [option2Grop addOptionView:pOption2View];
     
     
-    [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:150];
+    [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:50];
     [pOption1View autoSetDimensionsToSize:CGSizeMake(100, 30)];
     [pOption1View autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:400];
     
-    [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:150];
+    [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:50];
     [pOption2View autoSetDimensionsToSize:CGSizeMake(100, 30)];
     [pOption2View autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:400];
 }
