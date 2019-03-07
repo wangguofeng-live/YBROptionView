@@ -1,7 +1,7 @@
 # YBROptionView
 YBR 单选/多选控件
-<!--<p align="center">-->
-<!--<img src="SDWebImage_logo.png" title="SDWebImage logo" float=left>-->
-<!--</p>-->
-<!---->
-![YBROptionViewExample](Docs/demo.jpg)
+
+效果
+<p align="left">
+<img src="Docs/demo.jpg" title="YBROptionView Example" float=left>
+</p>
