@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol YBROptionGroupViewProtocol;
-@interface YBROptionGroup : NSObject
+@interface YBROptionGroup : UITableView <UITableViewDelegate>
 
 - (instancetype)initWithGroupId:(NSString *)argGroupId;
 
@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,readonly)NSArray *selectedIndexs;
 
 @property (nonatomic,readonly)NSArray *allOptionViews;
+
+//选中之前会d
+@property (nonatomic, copy)BOOL (^shouldOptionStateChangeBlock)(UIControl* optionView);
 
 @property (nonatomic, copy)void (^actionSelectedOptionChangedBlock)(NSInteger changedIndex);
 

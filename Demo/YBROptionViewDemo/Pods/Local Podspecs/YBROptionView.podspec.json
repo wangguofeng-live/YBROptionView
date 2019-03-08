@@ -1,8 +1,8 @@
 {
   "name": "YBROptionView",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "summary": "A short description of YBROptionView.",
-  "description": "单选框、复选框，可分组管理",
+  "description": "单选框、复选框，可分组管理，扩展性强； 自定义选择框只需要少量的代码改动即可集成到Group中",
   "homepage": "http://EXAMPLE/YBROptionView",
   "license": "MIT",
   "authors": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "",
-    "tag": "0.0.4"
+    "tag": "0.0.5"
   },
   "source_files": [
     "Classes",

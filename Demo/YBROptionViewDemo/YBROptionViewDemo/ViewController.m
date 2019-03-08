@@ -59,6 +59,9 @@
 
 - (void)testCustomOptionView {
     option2Grop = [[YBROptionGroup alloc] initWithGroupId:@"Group2"];
+    option2Grop.shouldOptionStateChangeBlock = ^BOOL(UIControl * _Nonnull optionView) {
+        return YES;
+    };
     
     YBROptionButton *pOption1View = [YBROptionButton buttonWithType:UIButtonTypeCustom];
     [pOption1View setTitle:@"Custom1" forState:UIControlStateNormal];

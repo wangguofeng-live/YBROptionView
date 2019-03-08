@@ -2,7 +2,7 @@ PODS:
   - Masonry (1.1.0)
   - PureLayout (3.1.4)
   - YBRConfigurationModule (0.0.4)
-  - YBROptionView (0.0.4):
+  - YBROptionView (0.0.5):
     - PureLayout
 
 DEPENDENCIES:
@@ -25,8 +25,8 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
   YBRConfigurationModule: 01a01396455083261895780f5960323a660de54f
-  YBROptionView: b76d69bc99e4df44e3c42ae303a496f98a1fac0b
+  YBROptionView: 4bc0ebca4619054e15d8cedd2c78104cae3d9953
 
 PODFILE CHECKSUM: ccd1b9933f3ec68d28addf9e43ff48d8fd2d06ba
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

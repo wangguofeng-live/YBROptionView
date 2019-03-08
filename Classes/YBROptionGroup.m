@@ -6,7 +6,7 @@
 //
 
 #import "YBROptionGroup.h"
-#import "YBRToolsMacro.h"
+#import <YBRConfigurationModule/YBRToolsMacro.h>
 
 @interface YBROptionGroup ()
 
@@ -87,35 +87,54 @@
     if (self.allowsMultipleSelection) {
         //允许多选
         UIControl *obj = sender;
-        if (_allowUnselected) {
-            obj.selected = !obj.selected;
-        }else {
-            obj.selected = YES;
+        
+        //是否允许状态变更
+        BOOL bAllow = YES;
+        if (self.shouldOptionStateChangeBlock) {
+            bAllow = self.shouldOptionStateChangeBlock(obj);
         }
         
-        if (self.actionSelectedOptionChangedBlock) {
-            self.actionSelectedOptionChangedBlock([self.arrOptionViews indexOfObject:sender]);
+        if (bAllow) {
+            if (_allowUnselected) {
+                obj.selected = !obj.selected;
+            }else {
+                obj.selected = YES;
+            }
+            
+            if (self.actionSelectedOptionChangedBlock) {
+                self.actionSelectedOptionChangedBlock([self.arrOptionViews indexOfObject:sender]);
+            }
         }
         
     }else {
-        kWeakSelf(self)
-        [self.arrOptionViews enumerateObjectsUsingBlock:^(UIControl *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            if ([obj isEqual:sender]) {
+        UIControl *obj = sender;
+        
+        //是否允许状态变更
+        BOOL bAllow = YES;
+        if (self.shouldOptionStateChangeBlock) {
+            bAllow = self.shouldOptionStateChangeBlock(obj);
+        }
+        
+        if (bAllow) {
+            kWeakSelf(self)
+            [self.arrOptionViews enumerateObjectsUsingBlock:^(UIControl *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                if (weakself.allowUnselected) {
-                    obj.selected = !obj.selected;
+                if ([obj isEqual:sender]) {
+                    
+                    if (weakself.allowUnselected) {
+                        obj.selected = !obj.selected;
+                    }else {
+                        obj.selected = YES;
+                    }
+                    
+                    if (weakself.actionSelectedOptionChangedBlock) {
+                        weakself.actionSelectedOptionChangedBlock(idx);
+                    }
                 }else {
-                    obj.selected = YES;
+                    obj.selected = NO;
                 }
-                
-                if (weakself.actionSelectedOptionChangedBlock) {
-                    weakself.actionSelectedOptionChangedBlock(idx);
-                }
-            }else {
-                obj.selected = NO;
-            }
-        }];
+            }];
+        }
     }
 }
 
