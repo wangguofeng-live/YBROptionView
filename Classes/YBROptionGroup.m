@@ -6,7 +6,7 @@
 //
 
 #import "YBROptionGroup.h"
-#import <YBRConfigurationModule/YBRToolsMacro.h>
+#import "YBRToolsMacro.h"
 
 @interface YBROptionGroup ()
 
