@@ -60,7 +60,7 @@
 
 - (void)setSelectedIndex:(NSInteger)argSelectedIndex {
     if (argSelectedIndex < 0) {
-        [self.arrOptionViews makeObjectsPerformSelector:@selector(setSelected:) withObject:@NO];
+        [self.arrOptionViews makeObjectsPerformSelector:@selector(setSelected:) withObject:nil];
     }else if (self.arrOptionViews.count > argSelectedIndex) {
         UIControl *pControl = self.arrOptionViews[argSelectedIndex];
         [self acitonOptionViewOnClick:pControl];
