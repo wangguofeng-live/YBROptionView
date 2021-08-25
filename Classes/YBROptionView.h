@@ -15,6 +15,12 @@
 
 - (instancetype)initWithText:(NSString *)argText selectedImage:(UIImage *)argSelectedImage unSelectedImage:(UIImage *)argUnselectedImage;
 
+- (instancetype)initWithText:(NSString *)argText
+               selectedImage:(UIImage *)argSelectedImage
+             unSelectedImage:(UIImage *)argUnselectedImage
+            layoutImageWidth:(CGFloat)imageWidth
+         imageToTextInterval:(CGFloat)imageToTextInterval;
+
 @property (nonatomic)NSString *text;
 
 @property (nonatomic)UIFont *textFont;

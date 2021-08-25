@@ -7,12 +7,10 @@
 //
 
 #import "YBROptionView.h"
-#import <PureLayout/PureLayout.h>
-#import "YBRToolsMacro.h"
+#import <Masonry/Masonry.h>
 
-//#define YBROptionValueChangedNotification @"YBROptionValueChangedNotification"
-//#define YBROptionValueChangedNotificationUserInfoKey_Group @"YBROptionValueChangedNotificationUserInfoKey_Group"
-//#define YBROptionValueChangedNotificationUserInfoKey_FromObject @"YBROptionValueChangedNotificationUserInfoKey_FromObject"
+#define YBR_OPTION_VIEW_RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
 
 @interface YBROptionView ()
 {
@@ -33,41 +31,56 @@
 }
 
 - (instancetype)initWithText:(NSString *)argText selectedImage:(UIImage *)argSelectedImage unSelectedImage:(UIImage *)argUnselectedImage {
+    return [self initWithText:argText selectedImage:argSelectedImage unSelectedImage:argUnselectedImage layoutImageWidth:0 imageToTextInterval:5];
+}
+
+- (instancetype)initWithText:(NSString *)argText
+               selectedImage:(UIImage *)argSelectedImage
+             unSelectedImage:(UIImage *)argUnselectedImage
+            layoutImageWidth:(CGFloat)imageWidth
+         imageToTextInterval:(CGFloat)imageToTextInterval {
     self = [super init];
     if (self) {
         m_pImageView = [[UIImageView alloc] initWithImage:argUnselectedImage highlightedImage:argSelectedImage];
-        [self ov_configurationView];
+        [self ov_configurationViewLayoutImageWidth:imageWidth imageToTextInterval:imageToTextInterval];
         self.text = argText;
         
         
         self.enabled = YES;
         [self addTarget:self action:@selector(actionOnClick:) forControlEvents:UIControlEventTouchUpInside];
-        //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(optionValueChangedNotification:) name:YBROptionValueChangedNotification object:nil];
     }
     return self;
 }
 
-- (void)ov_configurationView {
+- (void)ov_configurationViewLayoutImageWidth:(CGFloat)imageWidth imageToTextInterval:(CGFloat)imageToTextInterval {
     m_pImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:m_pImageView];
-    [m_pImageView configureForAutoLayout];
-    [m_pImageView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeRight];
-    //    [m_pImageView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
-    //    [m_pImageView autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
     
     m_pTextLabel = [[UILabel alloc] init];
-    m_pTextLabel.textColor = RGBA(34, 34, 34, 1);
+    m_pTextLabel.textColor = YBR_OPTION_VIEW_RGBA(34, 34, 34, 1);
     m_pTextLabel.font = [UIFont systemFontOfSize:17];
     
     [self addSubview:m_pTextLabel];
-    [m_pTextLabel configureForAutoLayout];
-    [m_pTextLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:m_pImageView withOffset:5];
-    [m_pTextLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    
+    [m_pImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        
+        if (imageWidth > 0) make.width.mas_equalTo(imageWidth);
+    }];
+    
+    
+    __weak typeof(m_pImageView) weakImageView = m_pImageView;
+    [m_pTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        __strong typeof(m_pImageView) strongImageView = weakImageView;
+        make.left.mas_equalTo(strongImageView.mas_right).offset(imageToTextInterval);
+        make.centerY.mas_equalTo(0);
+    }];
+
 }
 
 - (void)actionOnClick:(id)sender {
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:YBROptionValueChangedNotification object:nil userInfo:@{YBROptionValueChangedNotificationUserInfoKey_Group:self.group,YBROptionValueChangedNotificationUserInfoKey_FromObject : self}];
-    //
     if (!self.groupId) {
         
         if (_allowUnselected) {
@@ -77,18 +90,6 @@
         }
     }
 }
-
-//- (void)optionValueChangedNotification:(NSNotification *)notification {
-//
-//    NSDictionary *userInfo = notification.userInfo;
-//    NSString *strGroup = [userInfo objectForKey:YBROptionValueChangedNotificationUserInfoKey_Group];
-//    if ([strGroup isEqual:self.group]) {
-//
-//        id pFromObject = [userInfo objectForKey:YBROptionValueChangedNotificationUserInfoKey_FromObject];
-//        self.selected = [self isEqual:pFromObject];
-//    }
-//
-//}
 
 #pragma mark Seter & Geter
 

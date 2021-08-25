@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YBROptionView"
-  s.version      = "0.0.8"
+  s.version      = "0.0.9"
   s.summary      = "A short description of YBROptionView."
 
   # This description is used to generate tags and improve search results.
@@ -132,6 +132,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
-  s.dependency "PureLayout"
+  s.dependency "Masonry"
 
 end
