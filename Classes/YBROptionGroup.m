@@ -6,7 +6,6 @@
 //
 
 #import "YBROptionGroup.h"
-#import "YBRToolsMacro.h"
 
 @interface YBROptionGroup ()
 
@@ -116,7 +115,7 @@
         }
         
         if (bAllow) {
-            kWeakSelf(self)
+            __weak typeof(self) weakself = self;
             [self.arrOptionViews enumerateObjectsUsingBlock:^(UIControl *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
                 if ([obj isEqual:sender]) {
